@@ -1,11 +1,19 @@
----
 - hosts: all
- tasks:
-   - name: Install nginx web server
-     package:
-       name: nginx
-       state: present
-       version: latest
+  become: true
+  vars_files: "variables.yml"
 
- handlers:
-   - name:
+  tasks:
+  - name: Install nginx web server
+    package:
+      name: nginx
+      state: latest
+
+  - name: Create project directory
+    file:
+      path: "{{ project_path }}"
+      state: directory
+
+  - na
+
+
+

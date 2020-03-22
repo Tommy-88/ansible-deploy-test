@@ -1,6 +1,8 @@
+---
 - hosts: all
   become: true
   remote_user: root
+  vars_files: variables.yml
   tasks:
     - name: Ensuring that wheel is able to use sudo without password
       lineinfile:
@@ -8,13 +10,23 @@
         regexp: '^%wheel'
         line: '%sudo ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
+
+#    - name: Create project directory
+#      file:
+#        path: {{ project_path }}
+#        state: directory
+#        tags: upd
+
     - name: Create deploy user on all hosts
       user:
         name: developer
         group: sudo
+        create_home: {{ project_path }}
         shell: /bin/bash
+
     - name: Set authorized key taken from file
       authorized_key:
         user: developer
         state: present
         key: "{{ lookup('file', '{{ inventory_dir }}/files/ssh/slava/id_rsa.pub') }}"
+
