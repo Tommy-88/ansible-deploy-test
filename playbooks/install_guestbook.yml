@@ -1,0 +1,7 @@
+- hosts: all
+  vars_files: "variables.yml"
+  tasks:
+    - git:
+        repo: 'https://github.com/murik099/rpd_test.git'
+        dest: {{project_path}}
+

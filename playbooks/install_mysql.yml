@@ -1,0 +1,17 @@
+- hosts: all
+ # roles:
+ #   - role: geerlingguy.mysql
+ #     become: yes
+
+  tasks:
+    - name: Create a new database with name 'guest_book'
+      mysql_db:
+        name: guest_book
+        state: present
+
+    - name: Create database user
+      mysql_user:
+        name: root
+        password: Celestial352
+        priv: '*.*:ALL'
+        state: present

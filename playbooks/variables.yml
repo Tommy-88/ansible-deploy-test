@@ -1,2 +1,3 @@
 project_path: "/opt/guestbook"
+ansible_project_path: "/home/user/ansible/"
 domain_name: "localhost"

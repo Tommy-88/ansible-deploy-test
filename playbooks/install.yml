@@ -5,7 +5,11 @@
 
 #- import_playbook: install_requirement_packages.yml
 
-- import_playbook: install_nginx_web_server.yml
+#- import_playbook: install_nginx_web_server.yml
+
+#- import_playbook: install_mysql.yml
+
+- import_playbook: install_guestbook.yml
 
 
 
