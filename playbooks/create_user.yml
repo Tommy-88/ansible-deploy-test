@@ -1,0 +1,20 @@
+- hosts: all
+  become: true
+  remote_user: root
+  tasks:
+    - name: Ensuring that wheel is able to use sudo without password
+      lineinfile:
+        path: /etc/sudoers
+        regexp: '^%wheel'
+        line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+    - name: Create deploy user on all hosts
+      user:
+        name: developer
+        group: sudo
+        shell: /bin/bash
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: developer
+        state: present
+        key: "{{ lookup('file', '{{ inventory_dir }}/files/ssh/slava/id_rsa.pub') }}"

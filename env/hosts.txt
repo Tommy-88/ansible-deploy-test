@@ -1,0 +1,5 @@
+[rapsberry-pi]
+kali ansible_host=192.168.1.4 ansible_user=killer ansible_ssh_private_key_file=/home/user/.ssh/id_rsa
+
+[vm-ubuntu]
+ubuntu  ansible_host=192.168.106.132 ansible_user=deploy ansible_ssh_private_key_file=/home/user/.ssh/id_rsa

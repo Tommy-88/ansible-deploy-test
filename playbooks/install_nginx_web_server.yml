@@ -1,0 +1,11 @@
+---
+- hosts: all
+ tasks:
+   - name: Install nginx web server
+     package:
+       name: nginx
+       state: present
+       version: latest
+
+ handlers:
+   - name:
