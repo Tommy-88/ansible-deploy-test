@@ -8,12 +8,17 @@
       name: nginx
       state: latest
 
-  - name: Create project directory
-    file:
-      path: "{{ project_path }}"
-      state: directory
+  - name: Copy proxy conf files
+    template:
+      src: proxy.conf.j2
+      dest: /etc/nginx/conf.d/proxy.conf
+      force: yes
+    notify:
+        - Restart nginx
 
-  - na
-
-
+  handlers:
+    - name: Restart nginx
+      systemd:
+        state: restarted
+        name: nginx
 
