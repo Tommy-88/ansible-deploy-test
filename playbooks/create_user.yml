@@ -11,17 +11,12 @@
         line: '%sudo ALL=(ALL) NOPASSWD: ALL'
         validate: 'visudo -cf %s'
 
-#    - name: Create project directory
-#      file:
-#        path: {{ workdir }}
-#        state: directory
-#        tags: upd
 
     - name: Create deploy user on all hosts
       user:
         name: developer
         group: sudo
-        create_home: "{{ workdir }}"
+        home: "{{ workdir }}"
         shell: /bin/bash
 
     - name: Set authorized key taken from file

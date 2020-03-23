@@ -1,6 +1,6 @@
 - hosts: all
   become: true
-  vars_files: "variables.yml"
+
 
   tasks:
     - name: Update all packages to the latest version
