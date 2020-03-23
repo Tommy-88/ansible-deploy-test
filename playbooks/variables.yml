@@ -5,6 +5,8 @@ deploy_hosts: "all"
 workdir: "/opt/guestbook"
 project_path: "{{workdir}}/project"
 
+project_repo: "'https://github.com/murik099/rpd_test.git'"
+
 ansible_project_path: "/home/user/ansible/"
 templates_path: "{{ansible_project_path}}/templates"
 domain_name: "guestbook.example"
