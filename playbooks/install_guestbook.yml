@@ -9,7 +9,7 @@
 
     - name: cone git repo
       git:
-        repo: 'https://github.com/murik099/rpd_test.git'
+        repo: "{{project_repo}}"
         dest: "{{project_path}}"
 
     - name: add guestbook to the systemd
