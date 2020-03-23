@@ -1,7 +1,28 @@
 - hosts: all
   vars_files: "variables.yml"
   tasks:
-    - git:
+    - name: install git
+      become: true
+      package:
+        name: git
+        state: present
+
+    - name: cone git repo
+      git:
         repo: 'https://github.com/murik099/rpd_test.git'
-        dest: {{project_path}}
+        dest: "{{project_path}}"
+
+    - name: add guestbook to the systemd
+      template:
+        src: "{{templates_path}}/systemd/guestbook.service.j2"
+        dest: "/etc/systemd/system/guestbook.service"
+        mode: '664'
+
+    - name: enable systemd unit
+      systemd:
+        name: guestbook
+        enabled: true
+        state: restarted
+
+
 

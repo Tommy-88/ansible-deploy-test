@@ -13,7 +13,7 @@
 
 #    - name: Create project directory
 #      file:
-#        path: {{ project_path }}
+#        path: {{ workdir }}
 #        state: directory
 #        tags: upd
 
@@ -21,7 +21,7 @@
       user:
         name: developer
         group: sudo
-        create_home: {{ project_path }}
+        create_home: "{{ workdir }}"
         shell: /bin/bash
 
     - name: Set authorized key taken from file

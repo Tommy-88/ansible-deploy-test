@@ -1,0 +1,6 @@
+[Unit]
+Description=guestbook service
+[Service]
+WorkingDirectory={{project_path}}
+ExecStart=/usr/bin/python3 {{project_path}}
+Type=simple

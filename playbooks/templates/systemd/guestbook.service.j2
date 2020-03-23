@@ -1,6 +1,0 @@
-[Unit]
-Description=guestbook service
-[Service]
-WorkingDirectory=/opt/guestbook/
-ExecStart=/usr/bin/python3 -O /opt/guestbook/ -f /var/lib/service/api/cfg/service_api.cfg -p {{ port }}
-Type=simple

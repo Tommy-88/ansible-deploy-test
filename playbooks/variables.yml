@@ -1,3 +1,10 @@
-project_path: "/opt/guestbook"
+deploy_hosts: "all"
+
+
+
+workdir: "/opt/guestbook"
+project_path: "{{workdir}}/project"
+
 ansible_project_path: "/home/user/ansible/"
-domain_name: "localhost"
+templates_path: "{{ansible_project_path}}/templates"
+domain_name: "guestbook.example"

@@ -1,6 +1,7 @@
 ---
 - hosts: all
 
+
 #- import_playbook: create_user.yml
 
 #- import_playbook: install_requirement_packages.yml

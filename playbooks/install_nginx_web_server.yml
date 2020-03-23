@@ -10,11 +10,18 @@
 
   - name: Copy proxy conf files
     template:
-      src: proxy.conf.j2
+      src: "{{templates_path}}/proxy/proxy.conf.j2"
       dest: /etc/nginx/conf.d/proxy.conf
       force: yes
     notify:
         - Restart nginx
+
+  - name: Setup hostname instead localhost
+    replace:
+      path: /etc/hosts
+      regexp: 'localhost'
+      replace: "{{domain_name}}"
+
 
   handlers:
     - name: Restart nginx
