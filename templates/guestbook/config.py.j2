@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+"""This module contains a class that defines the basic configurations of a web
+service.
+"""
+import os
+
+class Config(object):
+    """This class defines the basic configurations of a web service.
+    """
+    DB_USER = os.environ.get('MYSQL_USER', '{{DB_USER}}')
+    DB_PASSWORD = os.environ.get('MYSQL_PASSWORD', '{{DB_PASSWORD}}')
+    DB_ADDRESS = os.environ.get('MYSQL_SERVER_ADDRESS', '{{DB_ADDRESS}}')
+    DB_NAME = os.environ.get('MYSQL_DATABASE', '{{DB_NAME}}')
+    APP_PORT = os.environ.get('GUESTBOOKAPP_PORT', {{APP_PORT}})
+    APP_ADDRESS = os.environ.get('APP_ADDRESS', '{{APP_ADDRESS}}')

@@ -2,25 +2,29 @@
   become: true
   vars_files: "variables.yml"
 
+
+
   tasks:
-  - name: Install nginx web server
-    package:
-      name: nginx
-      state: latest
 
-  - name: Copy proxy conf files
-    template:
-      src: "{{templates_path}}/proxy/proxy.conf.j2"
-      dest: /etc/nginx/conf.d/proxy.conf
-      force: yes
-    notify:
-        - Restart nginx
+    - name: Install nginx web server
+      package:
+        name: nginx
+        state: latest
 
-  - name: Setup hostname instead localhost
-    replace:
-      path: /etc/hosts
-      regexp: 'localhost'
-      replace: "{{domain_name}}"
+
+    - name: Copy proxy conf files
+      template:
+        src: "{{templates_path}}/proxy/proxy.conf.j2"
+        dest: /etc/nginx/conf.d/proxy.conf
+        force: yes
+      notify:
+          - Restart nginx
+
+    - name: Setup hostname
+      replace:
+        path: /etc/hosts
+        regexp: 'localhost'
+        replace: "{{domain_name}}"
 
 
   handlers:

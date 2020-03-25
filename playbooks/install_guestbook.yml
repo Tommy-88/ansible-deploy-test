@@ -1,5 +1,7 @@
 - hosts: all
   vars_files: "variables.yml"
+
+
   tasks:
     - name: install git
       become: true
@@ -9,8 +11,9 @@
 
     - name: cone git repo
       git:
-        repo: 'https://github.com/murik099/rpd_test.git'
+        repo: "{{project_repo}}"
         dest: "{{project_path}}"
+
 
     - name: add guestbook to the systemd
       template:
@@ -25,4 +28,33 @@
         state: restarted
 
 
+    - name: Copy env variables of guestbook
 
+      template:
+        src:  "{{templates_path}}/guestbook/config.py.j2"
+        dest: "{{project_path}}/guest_book/config.py"
+        check_mode: no
+      notify:
+         - Copy latest proxy conf files
+         - Restart guestbook
+         - Restart nginx
+      tags: update_guestbook_conf
+
+
+
+  handlers:
+    - name: Copy latest proxy conf files
+      template:
+        src: "{{templates_path}}/proxy/proxy.conf.j2"
+        dest: /etc/nginx/conf.d/proxy.conf
+
+    - name: Restart guestbook
+      systemd:
+        state: restarted
+        name: guestbook
+
+    - name: Restart nginx
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: nginx

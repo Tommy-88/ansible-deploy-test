@@ -5,7 +5,20 @@ deploy_hosts: "all"
 workdir: "/opt/guestbook"
 project_path: "{{workdir}}/project"
 
+
+project_repo: "https://github.com/murik099/rpd_test.git"
+
+handlers_path: "{{ansible_project_path}}/handlers"
+
 ansible_project_path: "/home/user/ansible/"
 templates_path: "{{ansible_project_path}}/templates"
 domain_name: "guestbook.example"
 
+# default env variables
+
+DB_USER: "root"
+DB_PASSWORD: "Celestial352"
+DB_ADDRESS: "127.0.0.1"
+DB_NAME: "guest_book"
+APP_PORT: "5000"
+APP_ADDRESS: "127.0.0.1"
