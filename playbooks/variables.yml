@@ -8,7 +8,6 @@ project_path: "{{workdir}}/project"
 
 project_repo: "https://github.com/murik099/rpd_test.git"
 
-handlers_path: "{{ansible_project_path}}/handlers"
 
 ansible_project_path: "/home/user/ansible/"
 templates_path: "{{ansible_project_path}}/templates"
