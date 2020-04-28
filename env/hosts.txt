@@ -1,5 +1,11 @@
 [all]
+test-server
 
-vm-ubuntu
-
-
+[api]
+test-server
+[proxy]
+test-server
+[front]
+test-server
+[db]
+test-server

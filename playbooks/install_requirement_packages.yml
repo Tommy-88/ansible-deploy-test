@@ -14,10 +14,18 @@
           - python3-setuptools
           - libev-dev
           - locales
+          - python3-venv
+          - libc6-dev
+          - python3-dev
+          - policykit-1
+
         state: latest
 
     - name: Install packages with pip3 flask bjoern sqlalchemy sqlalchemy_utils pymysql pytest cryptography
       pip:
+        executable: pip3
+        #virtualenv: /tmp/py3
+        #virtualenv_command: /usr/bin/python3 -m venv
         name:
           - flask
           - bjoern

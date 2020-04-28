@@ -9,15 +9,15 @@ project_path: "{{workdir}}/project"
 project_repo: "https://github.com/murik099/rpd_test.git"
 
 
-ansible_project_path: "/home/user/ansible/"
+ansible_project_path: "/home/user/ansible-deploy-test/"
 templates_path: "{{ansible_project_path}}/templates"
-domain_name: "guestbook.example"
+domain_name: "guestbook.ru"
 
 # default env variables
 
 DB_USER: "root"
 DB_PASSWORD: "Celestial352"
-DB_ADDRESS: "127.0.0.1"
+DB_ADDRESS: "185.10.187.99"
 DB_NAME: "guest_book"
 APP_PORT: "5000"
-APP_ADDRESS: "127.0.0.1"
+APP_ADDRESS: "185.10.187.99"
